@@ -1,0 +1,167 @@
+/* Background style */
+body {
+    background-color: #ffc3da;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Envelope container */
+.envelope-wrapper {
+    height: 250px;
+    padding-bottom: 60px;
+}
+
+#envelope {
+    position: relative;
+    height: 190px;
+    width: 280px;
+    margin: auto;
+    top: 50%;
+    background-color: #FF6863;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* Envelope and letter */
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-top: 98px solid #FF6863;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 82px solid transparent;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+.pocket {
+    border-left: 140px solid #FF8BA0;
+    border-right: 140px solid #FF8BA0;
+    border-bottom: 100px solid #FFA8B5;
+    border-top: 90px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.text1{
+    height: fit-content;
+}
+
+/* Letter */
+.letter {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    height: 95%;
+    top: 5%;
+    border-radius: 10px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+    margin: auto;
+    transition: transform 0.4s ease;
+}
+
+/* Opening effect */
+.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.open .letter {
+    transform: translateY(-80px);
+    z-index: 2;
+}
+
+/* Button styles */
+.reset button {
+    font-weight: 800;
+    background-color: transparent;
+    border: solid 2px #FF6863;
+    border-radius: 4px;
+    color: #FF6863;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 20px;
+    padding: 10px;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.reset button:hover {
+    background-color: #FF6863;
+    color: white;
+}
+
+/* Title style */
+.valentine {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #141414;
+    font-size: 50px;
+    margin-top: 100px;
+}
+
+.line4{
+    margin-top: -10px;
+}
+
+/* Hearts floating out of the letter */
+.heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('heart.png') no-repeat center center;
+    background-size: contain;
+    animation: floatUp 1s ease-in-out, fadeOut 1s ease-in-out; /* Faster animations */
+    left: 50%; /* Position hearts in the horizontal center */
+    top: 50%; /* Position hearts in the vertical center */
+    transform: translate(-50%, -50%); /* Precisely center the hearts on both axes */
+}
+
+/* Animation for moving up */
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, -50%) translateY(0); /* Start from the letter center */
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-450px); /* Fast upward movement */
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0; /* Hearts fade out as they rise */
+    }
+}
+
+/* Hearts appearing on the cursor */
+.cursor-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('heart.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 1;
+    animation: disappear 1s linear;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
